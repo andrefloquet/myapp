@@ -14,6 +14,7 @@ app.get('/', function(req, res){
 })
 
 // APIs
+/*
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
 
@@ -79,6 +80,7 @@ app.post('/entdelete', function(req, res){
   })
   
 });
+*/
  
 
 app.listen(3000, function(){
