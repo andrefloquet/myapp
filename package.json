@@ -1,7 +1,7 @@
 {
   "name": "myproject",
   "version": "1.0.0",
-  "description": "my personal project test ",
+  "description": "my personal project",
   "main": "./src/client.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,6 +17,7 @@
     "babel-loader": "^8.0.5",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "md5": "^2.2.1",
     "mongoose": "^5.5.1",
     "nodemon": "^1.18.11",
     "react": "^16.8.6",
