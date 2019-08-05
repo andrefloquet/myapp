@@ -20,7 +20,13 @@ export function entReducer(state={ent:[]}, action){
             const newEntToUpdate = {
                 ...currentEntToUpdate[indexToUpdate], 
                 ientt: action.payload.ientt,
-                ient: action.payload.ient
+                ient: action.payload.ient,
+                name: action.payload.name,
+                unitnum: action.payload.unitnum,
+                streetnum: action.payload.streetnum,
+                street: action.payload.street,
+                suburb: action.payload.suburb,
+                postcode: action.payload.postcode                               
             }
             // Use slice to remove the entity at the specified index
             return {ent: [...currentEntToUpdate.slice(0, indexToUpdate), newEntToUpdate,

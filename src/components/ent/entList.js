@@ -15,6 +15,12 @@ class EntList extends React.Component {
                         <td><Form.Check id={entArr._id} /></td>
                         <td>{entArr.ientt}</td>
                         <td>{entArr.ient}</td>
+                        <td>{entArr.name}</td>
+                        <td>{entArr.unitnum}</td>
+                        <td>{entArr.streetnum}</td>
+                        <td>{entArr.street}</td>                        
+                        <td>{entArr.suburb}</td>
+                        <td>{entArr.postcode}</td>                        
                     </tr>   
             )
         })
@@ -28,6 +34,12 @@ class EntList extends React.Component {
                             <th>#</th>
                             <th>Type</th>
                             <th>Code</th>
+                            <th>Name</th>
+                            <th>Unit Number</th>
+                            <th>Street Number</th>
+                            <th>Street</th>
+                            <th>Suburb</th>
+                            <th>Postcode</th>                                                       
                         </tr>
                     </thead>
                     <tbody>

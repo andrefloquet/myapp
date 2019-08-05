@@ -36,12 +36,14 @@ var Usr = require('./model/usr.js');
 // Insert - TODO: implement error control
 app.post('/ent', function(req, res){
 
-    //console.log(req.body)
+    console.log(req.body)
 
     const ent = new Ent(req.body);
     ent.save().then(() => console.log('salved'));
+
+    //console.log(ent)
  
-    res.json(ent);
+    res.json(req.body);
  });
 
 // Update - TODO: implement error control

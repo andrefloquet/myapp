@@ -36,9 +36,16 @@ class Ent extends React.Component {
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
 
+        // Refs
         this._id = React.createRef();
         this.ientt = React.createRef();
         this.ient = React.createRef();
+        this.name = React.createRef();
+        this.unitnum = React.createRef();
+        this.streetnum = React.createRef();
+        this.street = React.createRef();
+        this.suburb = React.createRef();        
+        this.postcode = React.createRef(); 
 
         this.state = {
             show: false,
@@ -65,8 +72,16 @@ class Ent extends React.Component {
 
         const ent = {
             ientt: this.ientt.current.value,
-            ient: this.ient.current.value            
+            ient: this.ient.current.value,
+            name: this.name.current.value,
+            unitnum: this.unitnum.current.value,
+            streetnum: this.streetnum.current.value,
+            street: this.street.current.value,
+            suburb: this.suburb.current.value,
+            postcode: this.postcode.current.value          
         }
+
+        console.log(ent)
 
         this.props.postEnt(ent);
 
@@ -78,7 +93,13 @@ class Ent extends React.Component {
         const ent = {
             _id: this._id.current.value,
             ientt: this.ientt.current.value,
-            ient: this.ient.current.value            
+            ient: this.ient.current.value,
+            name: this.name.current.value,
+            unitnum: this.unitnum.current.value,
+            streetnum: this.streetnum.current.value,
+            street: this.street.current.value,
+            suburb: this.suburb.current.value,
+            postcode: this.postcode.current.value            
         }
 
         this.props.entUpdate(ent);
@@ -109,6 +130,8 @@ class Ent extends React.Component {
     handleEntered(){
 
         if(this.state.action === "Update") {
+
+            console.log('reach')
             
             var id;
 
@@ -133,6 +156,13 @@ class Ent extends React.Component {
                 this._id.current.value = response.data[0]._id
                 this.ientt.current.value = response.data[0].ientt
                 this.ient.current.value = response.data[0].ient
+                this.name.current.value = response.data[0].name
+                this.unitnum.current.value = response.data[0].unitnum
+                this.streetnum.current.value = response.data[0].streetnum
+                this.street.current.value = response.data[0].street
+                this.suburb.current.value = response.data[0].suburb 
+                this.postcode.current.value = response.data[0].postcode 
+
             })
             .catch(function(err){
                 //dispatch({type:"POST_ENT_REJECTED", payload:"there was an error while posting a new book."})
@@ -192,7 +222,7 @@ class Ent extends React.Component {
                                 <Form.Row>
                                     <Col>
                                         <Form.Group controlId="ientt">
-                                            <Form.Label>Entity Type</Form.Label>
+                                            <Form.Label>Type</Form.Label>
                                             <Form.Control 
                                                 as="select"
                                                 ref={this.ientt}
@@ -212,6 +242,75 @@ class Ent extends React.Component {
                                         </Form.Group>
                                     </Col>
                                 </Form.Row>
+                                <Form.Row>
+                                    <Col>
+                                        <Form.Group controlId="name">
+                                            <Form.Label>Name</Form.Label>
+                                            <Form.Control 
+                                                ref={this.name} 
+                                                type="text"
+                                            />
+                                        </Form.Group>
+                                    </Col>
+                                </Form.Row> 
+                                <div>&nbsp;</div> 
+                                <Form.Row>
+                                    <Col sm="10">
+                                        <Form.Control plaintext readOnly defaultValue="ADDRESS" />
+                                    </Col>
+                                </Form.Row>
+                                <div>&nbsp;</div>
+                                <Form.Row>
+                                    <Col>
+                                        <Form.Group controlId="unitnum">
+                                            <Form.Label>Unit Number</Form.Label>
+                                            <Form.Control 
+                                                ref={this.unitnum} 
+                                                type="text"
+                                            />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col>
+                                        <Form.Group controlId="streetnum">
+                                            <Form.Label>Street Number</Form.Label>
+                                            <Form.Control 
+                                                ref={this.streetnum} 
+                                                type="text"
+                                            />
+                                        </Form.Group>
+                                    </Col>                                    
+                                </Form.Row> 
+                                <Form.Row>
+                                    <Col>
+                                        <Form.Group controlId="street">
+                                            <Form.Label>Street</Form.Label>
+                                            <Form.Control 
+                                                ref={this.street} 
+                                                type="text"
+                                            />
+                                        </Form.Group>
+                                    </Col>                                   
+                                </Form.Row> 
+                                <Form.Row>
+                                    <Col>
+                                        <Form.Group controlId="suburb">
+                                            <Form.Label>Suburb</Form.Label>
+                                            <Form.Control 
+                                                ref={this.suburb} 
+                                                type="text"
+                                            />
+                                        </Form.Group>
+                                    </Col>    
+                                    <Col>
+                                        <Form.Group controlId="postcode">
+                                            <Form.Label>PostCode</Form.Label>
+                                            <Form.Control 
+                                                ref={this.postcode} 
+                                                type="text"
+                                            />
+                                        </Form.Group>
+                                    </Col>                                                                   
+                                </Form.Row>                                                                                                                              
                             </Container>
                         </Modal.Body>
                         <Modal.Footer>
