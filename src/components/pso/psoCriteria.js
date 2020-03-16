@@ -10,9 +10,9 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-import {getGcps} from '../../actions/gcpActions';
+import {getPsos} from '../../actions/psoActions';
 
-class GcpCriteria extends React.Component {
+class PsoCriteria extends React.Component {
 
     constructor(...args) {
         super(...args);
@@ -33,7 +33,7 @@ class GcpCriteria extends React.Component {
         if(code) {query.code  = code}
         if(desc) {query.desc  = desc}
 
-        this.props.getGcps(query);
+        this.props.getPsos(query);
 
     }
 
@@ -44,22 +44,13 @@ class GcpCriteria extends React.Component {
                     <Row>
                         <Col>
                             <Card>
-                                <Card.Header>General Codes and Parameters Criteria</Card.Header>
+                                <Card.Header>Product / Service / Others Criteria</Card.Header>
                                 <Card.Body>
                                     <Form onSubmit={this.handleCriteria} method="post">
                                     <Form.Row>
-                                        <Form.Group controlId="name">
-                                            <Form.Label>Parameter Name</Form.Label>
-                                            <Form.Control 
-                                                _ref="name" 
-                                                type="text"
-                                            />
-                                        </Form.Group>                    
-                                    </Form.Row>
-                                    <Form.Row>
                                         <Col>
                                             <Form.Group controlId="code">
-                                                <Form.Label>Parameter Code</Form.Label>
+                                                <Form.Label>Code</Form.Label>
                                                 <Form.Control 
                                                     _ref="code" 
                                                     type="text"
@@ -68,7 +59,7 @@ class GcpCriteria extends React.Component {
                                         </Col>
                                         <Col>
                                             <Form.Group controlId="desc">
-                                                <Form.Label>Parameter Description</Form.Label>
+                                                <Form.Label>Description</Form.Label>
                                                 <Form.Control 
                                                     _ref="desc" 
                                                     type="text"
@@ -92,14 +83,14 @@ class GcpCriteria extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        gcp: state.gcp.gcp
+        pso: state.pso.pso
     }
 }
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators({
-        getGcps
+        getPsos
     }, dispatch)
 }
 
-export default  connect(mapStateToProps, mapDispatchToProps) (GcpCriteria);
+export default  connect(mapStateToProps, mapDispatchToProps) (PsoCriteria);

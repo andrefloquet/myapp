@@ -8,6 +8,7 @@ import Menu from './menu';
 import Ent from './ent/ent';
 import Gcp from './gcp/gcp';
 import Usr from './usr/usr';
+import Pso from './pso/pso';
 
 // TODO: Implement footer
 
@@ -25,6 +26,7 @@ class Main extends React.Component {
                         <Route path="/ent" component={Ent} />
                         <Route path="/gcp" component={Gcp} />
                         <Route path="/usr" component={Usr} />
+                        <Route path="/pso" component={Pso} />
                     </div>
                     </Card.Body>
                 </Card>

@@ -27,9 +27,10 @@ db.on('error', console.error.bind(console, '# MongoDB - connection error: '));
 var Ent = require('./model/ent.js');
 var Gcp = require('./model/gcp.js');
 var Usr = require('./model/usr.js');
+var Pso = require('./model/pso.js');
 
 // ############# Start APIs ##################
-//TODO: Split in files. System's module 
+//TODO: split in files(Controllers). System's module 
 
 // #### Begin ENT API - Entities ####
 
@@ -207,6 +208,79 @@ app.post('/usrdelete', function(req, res){
 
 // #### End USR API ####
 
+
+
+
+
+
+
+
+
+
+// #### Begin PSO API - PRODUCTS, SERVICES AND OTHERS ####
+
+// Read - TODO: implement error control.
+//              change to app.get()
+app.post('/psos', function(req, res){
+
+  const o = req.body
+
+  Pso.find(o, {}, function(err, psosResponse){
+    if(err){
+      //throw err;
+      console.log("# API GET Products and Services: ", err);
+    }
+    res.json(psosResponse);
+
+  }).sort({code: 1});
+});
+
+// Insert - TODO: implement error control.
+app.post('/pso', function(req, res){
+
+  const pso = new Pso(req.body);
+  pso.save().then(() => console.log('saved'));
+
+  res.json(pso);
+});
+
+// Update - TODO: implement error control.
+app.put('/pso', function(req, res){
+
+  Pso.replaceOne({_id: req.body._id}, req.body).then(() => console.log('updated'));
+
+  res.json(req.body);
+
+});
+
+// Delete - TODO: implement error control.
+//                change to app.delete()
+app.post('/psodelete', function(req, res){
+
+  const ids = req.body
+  console.log(ids)
+
+  Pso.deleteMany({_id: {$in: ids}}, function(err, response){
+    if(err){
+      //throw err;
+      console.log("# API DELETE Products and Services: ", err);
+    }
+    res.json(ids);
+  })
+  
+});
+
+// #### End PSO API ####
+
+
+
+
+
+
+
+
+
+
 // #### Begin UTIL or ANOTHER API ####
 
 // Get Entity Types
@@ -220,6 +294,22 @@ app.post('/usrdelete', function(req, res){
     }
 
     res.json(entityTypesResponse);
+
+  }).sort({code: 1});
+
+});
+
+// Get Entity Types
+app.post('/getBrands', function(req, res){
+
+  Gcp.find({name: "brand"}, function(err, brandsResponse){
+    
+    if(err){
+      //throw err;
+      console.log("# API GET BRANDS: ", err);
+    }
+
+    res.json(brandsResponse);
 
   }).sort({code: 1});
 
